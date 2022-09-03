@@ -3,7 +3,6 @@ import {Link, useNavigate} from "react-router-dom";
 import './Header.css'
 import {useLocation} from "react-router";
 import {Context} from "../../App";
-import {links, linksDefault} from "../../general/const";
 
 const Header = () => {
     const {pathname} = useLocation()

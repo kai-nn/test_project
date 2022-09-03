@@ -1,0 +1,23 @@
+.register_frame{
+    display: flex;
+    flex-direction: column;
+    margin: 100px 0;
+
+    width: 250px;
+}
+
+input{
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+
+.btn{
+    background-color: #bfe2f8;
+    border: none;
+}
+
+.btn:hover{
+    background-color: lightskyblue;
+}

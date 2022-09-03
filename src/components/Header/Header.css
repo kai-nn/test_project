@@ -1,0 +1,39 @@
+.header_frame {
+  width: 100%;
+  min-height: 50px;
+  background-color: darkgrey;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+
+  position: fixed;
+}
+
+
+.logo{
+  margin: 0 10px;
+}
+
+.menu *{
+  margin: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.user{
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.menu *:hover, .user:hover{
+  color: lightskyblue;
+}
+
+.menu_activated{
+  color: orange;
+}
+
+

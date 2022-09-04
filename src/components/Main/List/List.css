@@ -1,0 +1,47 @@
+.list{
+    width: 100%;
+}
+
+.table{
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table_row{
+    display: table-row;
+    cursor: pointer;
+}
+
+.table_row:hover{
+    color: lightskyblue;
+}
+
+.table_cell__id{
+    display: table-cell;
+    width: 50px;
+    min-width: 50px;
+}
+
+.table_cell__short{
+    display: table-cell;
+    width: 70px;
+    min-width: 70px;
+}
+
+.table_cell__target{
+    display: table-cell;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.table_cell__counter{
+    display: table-cell;
+    width: 80px;
+    text-align: right;
+}
+
+.header{
+    font-weight: bold;
+    height: 30px;
+}

@@ -3,15 +3,15 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import {links, linksDefault} from "./general/const";
 
-export const Context = React.createContext(null)
+export const Store = React.createContext(null)
 
 function App() {
-    const [context, setContext] = useState({user: 'Войти', links: linksDefault})
+    const [store, setStore] = useState({user: 'Войти', links: linksDefault})
     return (
-    <Context.Provider value={[context, setContext]}>
+    <Store.Provider value={[store, setStore]}>
         <Header/>
         <Main/>
-    </Context.Provider>
+    </Store.Provider>
     );
 }
 

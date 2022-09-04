@@ -1,12 +1,15 @@
 import React, {useContext} from 'react'
 import {HOST} from "../../../general/const";
-import './Login.css'
-import {Context} from "../../../App";
+import {Store} from "../../../App";
 import {links} from "../../../general/const";
+import {useNavigate} from "react-router-dom";
+import './Login.css'
+
 
 const Login = () => {
 
-    const [context, setContext] = useContext(Context)
+    const [store, setStore] = useContext(Store)
+    const navigate = useNavigate();
 
     const enter = (event) => {
         event.preventDefault()
@@ -42,12 +45,13 @@ const Login = () => {
             .then(result => {
                 if(!!result.access_token){
                     localStorage.setItem('token', result.access_token)
-                    setContext({user: user.name, links: links})
+                    setStore({user: user.name, links: links})
+                    navigate('/list')
                 } else {
                     alert(result.detail)
                     localStorage.clear()
                 }
-                console.log(localStorage.getItem('token'))
+                // console.log(localStorage.getItem('token'))
             })
     }
 

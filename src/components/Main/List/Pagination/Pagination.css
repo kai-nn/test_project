@@ -1,0 +1,23 @@
+.frame{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.group{
+    width: 30px;
+    text-align: center;
+    /*padding: 0 5px;*/
+    cursor: pointer;
+}
+.group:hover{
+    color: lightskyblue;
+}
+.group_active{
+    width: 30px;
+    text-align: center;
+    color: white;
+    background-color: darkgrey;
+    border-radius: 5px;
+
+}

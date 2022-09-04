@@ -2,13 +2,13 @@ import React, {useContext} from 'react'
 import {Link, useNavigate} from "react-router-dom";
 import './Header.css'
 import {useLocation} from "react-router";
-import {Context} from "../../App";
+import {Store} from "../../App";
 
 const Header = () => {
     const {pathname} = useLocation()
     const navigate = useNavigate();
 
-    const [context, setContext] = useContext(Context)
+    const [store, setStore] = useContext(Store)
 
     return (
         <div className="header_frame">
@@ -16,7 +16,7 @@ const Header = () => {
                 Сервис конвертации ссылок
             </div>
             <ul className="menu">
-                {context.links.map((el, id) => {
+                {store.links.map((el, id) => {
                     const {url, label} = el
                     const activated =
                         url === pathname
@@ -35,7 +35,7 @@ const Header = () => {
             </ul>
 
             <div className="user">
-                <a onClick={() => navigate('/login')}>{context.user}</a>
+                <a onClick={() => navigate('/login')}>{store.user}</a>
             </div>
         </div>
     )

@@ -1,0 +1,12 @@
+.panel{
+    /*padding: 5px;*/
+    /*background-color: wheat;*/
+    display: flex;
+    justify-content: space-between;
+}
+.link{
+    width: 100%;
+}
+.add{
+    height: 35px;
+}

@@ -11,7 +11,6 @@ const Register = () => {
     const register = (event) => {
         event.preventDefault()
         const user = {name: event.target.elements.login.value, password: event.target.elements.password.value}
-        console.log(user)
         if ((user.name.length < 3) || (user.password.length < 3)) {
             alert('Введенные данные не корректны')
             return
@@ -23,7 +22,6 @@ const Register = () => {
         let url = new URL(`${HOST}/register`)
         url.searchParams.set('username', user.name)
         url.searchParams.set('password', user.password)
-        console.log(url)
 
         fetch(
             url,
@@ -39,7 +37,6 @@ const Register = () => {
         )
             .then(res => res.json())
             .then(result => {
-                console.log('result', result)
                 if(!!result.username){
                     alert('Регистрация прошла успешно.')
                     navigate('/login')

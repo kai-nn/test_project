@@ -14,6 +14,7 @@ const List = () => {
     const [offset, setOffset] = useState(0)
     const [limit, setLimit] = useState(10)
     const [count, setCount] = useState(10)
+    const [loading, setLoading] = useState(false)
 
     if(localStorage.getItem('token') === null) {
         // console.log(localStorage.getItem('token'))
@@ -22,34 +23,16 @@ const List = () => {
     }
 
     useEffect(() => {
-        const url = new URL(`${HOST}/statistics`)
-        const orderVar = order.direction
-            ? 'asc_' + order.field
-            : 'desc_' + order.field
-        url.searchParams.set('order', orderVar)
-        url.searchParams.set('offset', String(offset))
-        url.searchParams.set('limit', String(100000))
-
-        fetch(
-            url,
-            {
-                method: 'get',
-                headers:
-                    {
-                        'accept': 'application/json',
-                        'Authorization': 'Bearer ' + localStorage.getItem('token'),
-                    },
-            }
-        )
-            .then(res => res.json())
-            .then(result => {
-                setCount(result.length)
-            })
-    }, [count])
+        getStatistic(100000).then(data => {
+            setCount(data.length)
+        })
+    }, [loading])
 
 
     useEffect(() => {
-        getStatistic()
+        getStatistic(limit).then(data => {
+            setList(data)
+        })
     }, [offset, order])
 
 
@@ -63,7 +46,7 @@ const List = () => {
     }
 
 
-    const getStatistic = () => {
+    const getStatistic = async (lim) => {
 
         const url = new URL(`${HOST}/statistics`)
         const orderVar = order.direction
@@ -71,9 +54,9 @@ const List = () => {
             : 'desc_' + order.field
         url.searchParams.set('order', orderVar)
         url.searchParams.set('offset', String(offset))
-        url.searchParams.set('limit', String(limit))
+        url.searchParams.set('limit', String(lim))
 
-        fetch(
+        const res = await fetch(
             url,
             {
                 method: 'get',
@@ -84,10 +67,7 @@ const List = () => {
                     },
             }
         )
-            .then(res => res.json())
-            .then(result => {
-                setList(result)
-            })
+        return await res.json()
     }
 
 
@@ -95,7 +75,7 @@ const List = () => {
         <div className={'list'}>
 
             <Pagination offset={offset} limit={limit} count={count} setOffset={setOffset}/>
-            <Squeeze count={count} setCount={setCount} />
+            <Squeeze loading={loading} setLoading={setLoading} />
 
             <div className={'table'}>
                 <div className={'table_row header'} key={'row_header'}>

@@ -16,13 +16,12 @@ const List = () => {
     const [count, setCount] = useState(10)
 
     if(localStorage.getItem('token') === null) {
-        console.log(localStorage.getItem('token'))
-        alert('Сеанс завершен. Пройдите авторизацию для продолжения')
+        // console.log(localStorage.getItem('token'))
+        alert('Сеанс работы завершен. Пройдите авторизацию')
         navigate('/login')
     }
 
     useEffect(() => {
-        // прошу понять и простить...
         const url = new URL(`${HOST}/statistics`)
         const orderVar = order.direction
             ? 'asc_' + order.field
@@ -46,7 +45,7 @@ const List = () => {
             .then(result => {
                 setCount(result.length)
             })
-    }, [])
+    }, [count])
 
 
     useEffect(() => {
@@ -56,7 +55,6 @@ const List = () => {
 
     const redirect = (short) => {
         let url = new URL(`${HOST}/s/${short}`)
-        console.log('redirect to url', url)
         window.open(url);
     }
 
@@ -93,12 +91,11 @@ const List = () => {
     }
 
 
-
     return (
         <div className={'list'}>
 
             <Pagination offset={offset} limit={limit} count={count} setOffset={setOffset}/>
-            <Squeeze />
+            <Squeeze count={count} setCount={setCount} />
 
             <div className={'table'}>
                 <div className={'table_row header'} key={'row_header'}>

@@ -1,10 +1,12 @@
 import React, {useRef} from 'react'
 import './Squeeze.css'
 import {HOST} from "../../../../general/const";
+import {useNavigate} from "react-router-dom";
 
-const Squeeze = () => {
+const Squeeze = ({count, setCount}) => {
 
     const refUrl = useRef(null)
+    const navigate = useNavigate();
 
     const add = () => {
         if (refUrl.current.value) {
@@ -27,7 +29,8 @@ const Squeeze = () => {
             )
                 .then(res => res.json())
                 .then(result => {
-                    result.detail[0].msg && alert(result.detail[0].msg)
+                    // result.detail[0].msg && alert(result.detail[0].msg)
+                    setCount(count+1)
                     }
                 )
 

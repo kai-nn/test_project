@@ -1,9 +1,12 @@
 import React from 'react'
 import './Register.css'
 import {HOST} from "../../../general/const";
+import {useNavigate} from "react-router-dom";
 
 
 const Register = () => {
+
+    const navigate = useNavigate();
 
     const register = (event) => {
         event.preventDefault()
@@ -39,6 +42,7 @@ const Register = () => {
                 console.log('result', result)
                 if(!!result.username){
                     alert('Регистрация прошла успешно.')
+                    navigate('/login')
                 } else {
                     alert(result.detail)
                 }

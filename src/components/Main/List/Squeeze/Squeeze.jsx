@@ -1,7 +1,8 @@
 import React, {useRef} from 'react'
-import './Squeeze.css'
 import {HOST} from "../../../../general/const";
 import {useNavigate} from "react-router-dom";
+import './Squeeze.css'
+
 
 const Squeeze = ({loading, setLoading}) => {
 

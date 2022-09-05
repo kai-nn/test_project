@@ -20,7 +20,7 @@ const Login = () => {
             id: null,
             secret: null
         }
-        console.log(user)
+
         if ((user.name.length < 3) || (user.password.length < 3)) {
             alert('Введенные данные не корректны')
             return

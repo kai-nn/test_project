@@ -1,8 +1,9 @@
 import React, {useContext} from 'react'
 import {Link, useNavigate} from "react-router-dom";
-import './Header.css'
 import {useLocation} from "react-router";
 import {Store} from "../../App";
+import './Header.css'
+
 
 const Header = () => {
     const {pathname} = useLocation()

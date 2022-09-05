@@ -25,6 +25,7 @@ const List = () => {
     useEffect(() => {
         getStatistic(100000).then(data => {
             setCount(data.length)
+            setList(data)
         })
     }, [loading])
 
@@ -38,7 +39,8 @@ const List = () => {
 
     const redirect = (short) => {
         let url = new URL(`${HOST}/s/${short}`)
-        window.open(url);
+        window.open(url)
+        setLoading(!loading)
     }
 
     const sort = (value) => {
